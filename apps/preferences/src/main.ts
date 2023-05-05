@@ -1,12 +1,13 @@
 import { NestFactory } from '@nestjs/core';
-import { ReviewsModule } from './reviews.module';
+import { PreferencesModule } from './preferences.module';
 import { RabbitmqConnectorService } from '@app/rabbitmq-connector';
 
 async function bootstrap() {
-  const app = await NestFactory.create(ReviewsModule);
+  const app = await NestFactory.create(PreferencesModule);
   const rmqService = app.get<RabbitmqConnectorService>(
     RabbitmqConnectorService,
   );
-  app.connectMicroservice(rmqService.getConfig('REVIEWS'));
+  app.connectMicroservice(rmqService.getConfig('PREFERENCES'));
 }
 bootstrap();
+

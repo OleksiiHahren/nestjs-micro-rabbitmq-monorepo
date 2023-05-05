@@ -1,8 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { UsersModule } from './users.module';
+import { RabbitmqConnectorService } from '@app/rabbitmq-connector';
 
 async function bootstrap() {
   const app = await NestFactory.create(UsersModule);
-  await app.listen(3000);
+  const rmqService = app.get<RabbitmqConnectorService>(
+    RabbitmqConnectorService,
+  );
+  app.connectMicroservice(rmqService.getConfig('USERS'));
 }
 bootstrap();

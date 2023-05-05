@@ -25,29 +25,17 @@ services:
       - rabbitmq
       - postgres-db-users
 
-  books:
+  preferences:
     build:
       context: .
-      dockerfile: ./apps/books/Dockerfile
+      dockerfile: ./apps/preferences/Dockerfile
       target: development
-    command: npm run start:dev books
+    command: npm run start:dev preferences
     env_file:
-      - ./apps/books/.env
+      - ./apps/preferences/.env
     depends_on:
       - rabbitmq
-      - mongo-db-books
-
-  movies:
-    build:
-      context: .
-      dockerfile: ./apps/movies/Dockerfile
-      target: development
-    command: npm run start:dev movies
-    env_file:
-      - ./apps/movies/.env
-    depends_on:
-      - rabbitmq
-      - mongo-db-movies
+      - mongo-db-preferences
 
   reviews:
     build:
@@ -61,17 +49,6 @@ services:
       - rabbitmq
       - mongo-db-reviews
 
-  mongo-db-books:
-    image: mongo
-    ports:
-      - '27017:27017'
-    restart: always
-    volumes:
-      - ./data:/data/mongo-db-books
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
-
   mongo-db-reviews:
     image: mongo
     ports:
@@ -83,7 +60,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
 
-  mongo-db-movies:
+  mongo-db-preferences:
     image: mongo
     ports:
       - '27019:27017'

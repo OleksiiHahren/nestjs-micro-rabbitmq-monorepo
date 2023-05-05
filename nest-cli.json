@@ -79,6 +79,33 @@
       "compilerOptions": {
         "tsConfigPath": "libs/rabbitmq-connector/tsconfig.lib.json"
       }
+    },
+    "preferencies": {
+      "type": "application",
+      "root": "apps/preferencies",
+      "entryFile": "main",
+      "sourceRoot": "apps/preferencies/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/preferencies/tsconfig.app.json"
+      }
+    },
+    "npx": {
+      "type": "application",
+      "root": "apps/@nestjs/cli/npx",
+      "entryFile": "main",
+      "sourceRoot": "apps/@nestjs/cli/npx/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/@nestjs/cli/npx/tsconfig.app.json"
+      }
+    },
+    "preferences": {
+      "type": "application",
+      "root": "apps/preferences",
+      "entryFile": "main",
+      "sourceRoot": "apps/preferences/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/preferences/tsconfig.app.json"
+      }
     }
   }
 }
