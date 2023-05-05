@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/mongodb-connector": [
+        "libs/mongodb-connector/src"
+      ],
+      "@app/mongodb-connector/*": [
+        "libs/mongodb-connector/src/*"
+      ],
+      "@app/postgresql-connector": [
+        "libs/postgresql-connector/src"
+      ],
+      "@app/postgresql-connector/*": [
+        "libs/postgresql-connector/src/*"
+      ],
+      "@app/rabbitmq-connector": [
+        "libs/rabbitmq-connector/src"
+      ],
+      "@app/rabbitmq-connector/*": [
+        "libs/rabbitmq-connector/src/*"
+      ]
+    }
+  }
+}

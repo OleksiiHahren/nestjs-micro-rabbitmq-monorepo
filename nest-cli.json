@@ -1,0 +1,84 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/users/src",
+  "monorepo": true,
+  "root": "apps/users",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/users/tsconfig.app.json"
+  },
+  "projects": {
+    "users": {
+      "type": "application",
+      "root": "apps/users",
+      "entryFile": "main",
+      "sourceRoot": "apps/users/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users/tsconfig.app.json"
+      }
+    },
+    "reviews": {
+      "type": "application",
+      "root": "apps/reviews",
+      "entryFile": "main",
+      "sourceRoot": "apps/reviews/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/reviews/tsconfig.app.json"
+      }
+    },
+    "movies": {
+      "type": "application",
+      "root": "apps/movies",
+      "entryFile": "main",
+      "sourceRoot": "apps/movies/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/movies/tsconfig.app.json"
+      }
+    },
+    "books": {
+      "type": "application",
+      "root": "apps/books",
+      "entryFile": "main",
+      "sourceRoot": "apps/books/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/books/tsconfig.app.json"
+      }
+    },
+    "api-gateway": {
+      "type": "application",
+      "root": "apps/api-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/api-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+      }
+    },
+    "mongodb-connector": {
+      "type": "library",
+      "root": "libs/mongodb-connector",
+      "entryFile": "index",
+      "sourceRoot": "libs/mongodb-connector/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/mongodb-connector/tsconfig.lib.json"
+      }
+    },
+    "postgresql-connector": {
+      "type": "library",
+      "root": "libs/postgresql-connector",
+      "entryFile": "index",
+      "sourceRoot": "libs/postgresql-connector/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/postgresql-connector/tsconfig.lib.json"
+      }
+    },
+    "rabbitmq-connector": {
+      "type": "library",
+      "root": "libs/rabbitmq-connector",
+      "entryFile": "index",
+      "sourceRoot": "libs/rabbitmq-connector/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/rabbitmq-connector/tsconfig.lib.json"
+      }
+    }
+  }
+}

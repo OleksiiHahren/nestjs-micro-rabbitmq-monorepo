@@ -1,0 +1,118 @@
+services:
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./apps/api-gateway/Dockerfile
+      target: development
+    command: npm run start:dev api-gateway
+    env_file:
+      - ./apps/api-gateway/.env
+    depends_on:
+      - books
+      - movies
+      - reviews
+      - users
+
+  users:
+    build:
+      context: .
+      dockerfile: ./apps/users/Dockerfile
+      target: development
+    command: npm run start:dev users
+    env_file:
+      - ./apps/users/.env
+    depends_on:
+      - rabbitmq
+      - postgres-db-users
+
+  books:
+    build:
+      context: .
+      dockerfile: ./apps/books/Dockerfile
+      target: development
+    command: npm run start:dev books
+    env_file:
+      - ./apps/books/.env
+    depends_on:
+      - rabbitmq
+      - mongo-db-books
+
+  movies:
+    build:
+      context: .
+      dockerfile: ./apps/movies/Dockerfile
+      target: development
+    command: npm run start:dev movies
+    env_file:
+      - ./apps/movies/.env
+    depends_on:
+      - rabbitmq
+      - mongo-db-movies
+
+  reviews:
+    build:
+      context: .
+      dockerfile: ./apps/reviews/Dockerfile
+      target: development
+    command: npm run start:dev reviews
+    env_file:
+      - ./apps/reviews/.env
+    depends_on:
+      - rabbitmq
+      - mongo-db-reviews
+
+  mongo-db-books:
+    image: mongo
+    ports:
+      - '27017:27017'
+    restart: always
+    volumes:
+      - ./data:/data/mongo-db-books
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+  mongo-db-reviews:
+    image: mongo
+    ports:
+      - '27018:27017'
+    restart: always
+    volumes:
+      - ./data:/data/mongo-db-reviews
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+  mongo-db-movies:
+    image: mongo
+    ports:
+      - '27019:27017'
+    restart: always
+    volumes:
+      - ./data:/data/mongo-db-movies
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+  postgres-db-users:
+    image: postgres
+    ports:
+      - '5432:5432'
+    container_name: postgres-db-users
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres-db-users
+
+  rabbitmq:
+    image: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: password
+    ports:
+      - '5672:5672'
+    volumes:
+      - ./rabbitmq_data:/var/lib/rabbitmq
+
+
