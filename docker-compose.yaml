@@ -62,7 +62,7 @@ services:
   mongo-db-preferences:
     image: mongo
     ports:
-      - '27019:27017'
+      - '27017:27017'
     restart: always
     volumes:
       - ./data:/data/mongo-db-movies
@@ -77,9 +77,9 @@ services:
     container_name: postgres-db-users
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres-db-users
+      POSTGRES_USER: postgresql
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nest-micro-users
 
   rabbitmq:
     image: rabbitmq

@@ -35,6 +35,12 @@
       ],
       "@app/rabbitmq-connector/*": [
         "libs/rabbitmq-connector/src/*"
+      ],
+      "@app/auth-validator": [
+        "libs/auth-validator/src"
+      ],
+      "@app/auth-validator/*": [
+        "libs/auth-validator/src/*"
       ]
     }
   }

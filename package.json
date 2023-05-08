@@ -29,6 +29,9 @@
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/platform-express": "^9.4.0",
     "@nestjs/typeorm": "^9.0.1",
+    "amqp-connection-manager": "^4.1.13",
+    "amqplib": "^0.10.3",
+    "cookie-parser": "^1.4.6",
     "joi": "^17.9.2",
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
@@ -82,7 +85,8 @@
     "moduleNameMapper": {
       "^@app/mongodb-connector(|/.*)$": "<rootDir>/libs/mongodb-connector/src/$1",
       "^@app/postgresql-connector(|/.*)$": "<rootDir>/libs/postgresql-connector/src/$1",
-      "^@app/rabbitmq-connector(|/.*)$": "<rootDir>/libs/rabbitmq-connector/src/$1"
+      "^@app/rabbitmq-connector(|/.*)$": "<rootDir>/libs/rabbitmq-connector/src/$1",
+      "^@app/auth-validator(|/.*)$": "<rootDir>/libs/auth-validator/src/$1"
     }
   }
 }

@@ -13,11 +13,12 @@ import { RabbitmqConnectorModule } from '@app/rabbitmq-connector';
       validationSchema: Joi.object({
         RABBIT_MQ_URI: Joi.string().required(),
         RABBIT_MQ_PREFERENCE_QUEUE: Joi.string().required(),
+        MONGODB_AUTH_SOURCE: Joi.string().required()
       }),
       envFilePath: './apps/preferences/.env',
     }),
     RabbitmqConnectorModule,
-    MongodbConnectorModule.register(),
+    MongodbConnectorModule.register('MONGO_DB_NAME'),
   ],
   controllers: [PreferencesController],
   providers: [PreferencesService],

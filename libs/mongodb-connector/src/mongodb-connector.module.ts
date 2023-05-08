@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
 })
 export class MongodbConnectorModule {
-  static register(): DynamicModule {
+  static register(key: string): DynamicModule {
     return {
       module: MongodbConnectorModule,
       imports: [
@@ -14,7 +14,7 @@ export class MongodbConnectorModule {
           inject: [ConfigService],
           useFactory: async (configService: ConfigService) => ({
             uri: configService.get('MONGODB_URI'),
-            dbName: configService.get('MONGODB_DB_NAME'),
+            dbName: configService.get(key),
             authSource: configService.get('MONGODB_AUTH_SOURCE'),
             user: configService.get('MONGODB_USER'),
             pass: configService.get('MONGODB_PASS'),
