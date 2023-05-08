@@ -21,13 +21,15 @@
     "test:e2e": "jest --config ./apps/nestjs-micro-rabbitmq-monorepo/apps/@nestjs/cli/nestjs-micro-rabbitmq-monorepo/test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.0",
+    "@nestjs/common": "^9.4.0",
     "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.4.0",
+    "@nestjs/jwt": "^10.0.3",
     "@nestjs/microservices": "^9.4.0",
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/platform-express": "^9.4.0",
     "@nestjs/typeorm": "^9.0.1",
+    "joi": "^17.9.2",
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

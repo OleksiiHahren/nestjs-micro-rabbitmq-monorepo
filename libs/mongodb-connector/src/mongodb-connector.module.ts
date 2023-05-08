@@ -1,5 +1,4 @@
 import { Module, DynamicModule } from '@nestjs/common';
-import { MongodbConnectorService } from './mongodb-connector.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
