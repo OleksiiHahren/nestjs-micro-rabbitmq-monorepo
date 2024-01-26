@@ -1,12 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { UserCreateDto } from '@app/common';
+import { UserDto } from '@app/common';
+import { RMQRoute } from 'nestjs-rmq';
 
 @Controller()
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get()
-  getHello(): string {
-    return this.usersService.getHello();
+  @RMQRoute('users.create')
+  async create(dto: UserCreateDto): Promise<UserDto> {
+    const res = this.usersService.create(dto);
+    console.log(res, '<--------- response from user service')
+    return res
   }
 }

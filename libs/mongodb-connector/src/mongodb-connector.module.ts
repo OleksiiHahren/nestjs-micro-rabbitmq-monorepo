@@ -1,11 +1,12 @@
 import { Module, DynamicModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import {ModelDefinition} from "@nestjs/mongoose/dist/interfaces";
 
 @Module({
 })
 export class MongodbConnectorModule {
-  static register(key: string): DynamicModule {
+  static register(key: string, models: ModelDefinition[]): DynamicModule {
     return {
       module: MongodbConnectorModule,
       imports: [
@@ -20,6 +21,7 @@ export class MongodbConnectorModule {
             pass: configService.get('MONGODB_PASS'),
           }),
         }),
+        MongooseModule.forFeature(models)
       ],
       exports: [MongooseModule],
     };

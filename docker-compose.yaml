@@ -11,6 +11,8 @@ services:
       - preferences
       - reviews
       - users
+    ports:
+      - '3000:3000'
 
   users:
     build:
@@ -23,6 +25,8 @@ services:
     depends_on:
       - rabbitmq
       - postgres-db-users
+    ports:
+      - '3003:3000'
 
   preferences:
     build:
@@ -35,26 +39,29 @@ services:
     depends_on:
       - rabbitmq
       - mongo-db-preferences
-
-  reviews:
+    ports:
+      - '3002:3000'
+  news-feed:
     build:
       context: .
-      dockerfile: ./apps/reviews/Dockerfile
+      dockerfile: apps/news-feed/Dockerfile
       target: development
-    command: npm run start:dev reviews
+    command: npm run start:dev news-feed
     env_file:
-      - ./apps/reviews/.env
+      - apps/news-feed/.env
     depends_on:
       - rabbitmq
-      - mongo-db-reviews
+      - mongo-db-news-feed
+    ports:
+      - '3001:3000'
 
-  mongo-db-reviews:
+  mongo-db-news-feed:
     image: mongo
     ports:
       - '27018:27017'
     restart: always
     volumes:
-      - ./data:/data/mongo-db-reviews
+      - ./data:/data/mongo-db-news-feed
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
@@ -65,7 +72,7 @@ services:
       - '27017:27017'
     restart: always
     volumes:
-      - ./data:/data/mongo-db-movies
+      - ./data:/data/mongo-db-preferences
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
@@ -82,13 +89,12 @@ services:
       POSTGRES_DB: nest-micro-users
 
   rabbitmq:
-    image: rabbitmq
+    image: "rabbitmq:3-management"
     environment:
-      RABBITMQ_DEFAULT_USER: root
-      RABBITMQ_DEFAULT_PASS: password
+      RABBITMQ_DEFAULT_USER: "root"
+      RABBITMQ_DEFAULT_PASS: "password"
     ports:
-      - '5672:5672'
+      - "5672:5672"
+      - "15672:15672"
     volumes:
-      - ./rabbitmq_data:/var/lib/rabbitmq
-
-
+    - ./rabbitmq_data:/var/lib/rabbitmq

@@ -1,12 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { UsersModule } from './users.module';
-import { RabbitmqConnectorService } from '@app/rabbitmq-connector';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(UsersModule);
-  const rmqService = app.get<RabbitmqConnectorService>(
-    RabbitmqConnectorService,
-  );
-  app.connectMicroservice(rmqService.getConfig('USERS'));
+  await app.listen(process.env.PORT);
+  Logger.log(`🚀 Users is running on: http://localhost:${process.env.PORT}`);
 }
+
 bootstrap();

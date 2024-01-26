@@ -17,31 +17,13 @@
         "tsConfigPath": "apps/users/tsconfig.app.json"
       }
     },
-    "reviews": {
+    "news-feed": {
       "type": "application",
-      "root": "apps/reviews",
+      "root": "apps/news-feed",
       "entryFile": "main",
-      "sourceRoot": "apps/reviews/src",
+      "sourceRoot": "apps/news-feed/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/reviews/tsconfig.app.json"
-      }
-    },
-    "movies": {
-      "type": "application",
-      "root": "apps/movies",
-      "entryFile": "main",
-      "sourceRoot": "apps/movies/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/movies/tsconfig.app.json"
-      }
-    },
-    "books": {
-      "type": "application",
-      "root": "apps/books",
-      "entryFile": "main",
-      "sourceRoot": "apps/books/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/books/tsconfig.app.json"
+        "tsConfigPath": "apps/news-feed/tsconfig.app.json"
       }
     },
     "api-gateway": {
@@ -78,15 +60,6 @@
       "sourceRoot": "libs/rabbitmq-connector/src",
       "compilerOptions": {
         "tsConfigPath": "libs/rabbitmq-connector/tsconfig.lib.json"
-      }
-    },
-    "preferencies": {
-      "type": "application",
-      "root": "apps/preferencies",
-      "entryFile": "main",
-      "sourceRoot": "apps/preferencies/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/preferencies/tsconfig.app.json"
       }
     },
     "npx": {

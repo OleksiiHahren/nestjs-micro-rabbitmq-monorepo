@@ -5,9 +5,11 @@ import { RabbitmqConnectorService } from '@app/rabbitmq-connector';
 async function bootstrap() {
   const app = await NestFactory.create(PreferencesModule);
   const rmqService = app.get<RabbitmqConnectorService>(
-    RabbitmqConnectorService,
+    RabbitmqConnectorService
   );
   app.connectMicroservice(rmqService.getConfig('PREFERENCES'));
+  await app.listen(3004)
 }
+
 bootstrap();
 
