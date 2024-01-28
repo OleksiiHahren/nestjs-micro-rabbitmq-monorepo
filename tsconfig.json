@@ -44,6 +44,12 @@
       ],
       "@app/auth-validator/*": [
         "libs/auth-validator/src/*"
+      ],
+      "@app/contracts": [
+        "libs/contracts/src"
+      ],
+      "@app/contracts/*": [
+        "libs/contracts/src/*"
       ]
     }
   }

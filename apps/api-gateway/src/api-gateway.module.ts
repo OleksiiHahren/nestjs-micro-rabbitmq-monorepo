@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ApiGatewayController } from './api-gateway.controller';
-import { ApiGatewayService } from './api-gateway.service';
 import { RabbitmqConnectorModule } from '@app/rabbitmq-connector';
 import { ConfigModule } from '@nestjs/config';
 import { UsersController } from './controllers/users.controller';
 import { UserService } from './services/user.service';
+import { UserConnectionsController } from './controllers/user-connections/user-connections.controller';
+import { UserConnectionsService } from './services/user-connections/user-connections.service';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { UserService } from './services/user.service';
     }),
     RabbitmqConnectorModule.register('users')
   ],
-  controllers: [ApiGatewayController, UsersController],
-  providers: [ApiGatewayService, UserService]
+  controllers: [UsersController, UserConnectionsController],
+  providers: [UserService, UserConnectionsService]
 })
 export class ApiGatewayModule {}

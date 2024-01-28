@@ -32,9 +32,12 @@
     "@nestjs/typeorm": "^9.0.1",
     "amqp-connection-manager": "^4.1.13",
     "amqplib": "^0.10.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "cookie-parser": "^1.4.6",
     "i": "^0.3.7",
     "joi": "^17.9.2",
+    "lib": "^5.1.0",
     "nestjs-rmq": "^2.13.0",
     "nestjs-typeorm-custom-repository": "^1.1.1",
     "npm": "^10.3.0",
@@ -91,7 +94,8 @@
       "^@app/mongodb-connector(|/.*)$": "<rootDir>/libs/mongodb-connector/src/$1",
       "^@app/postgresql-connector(|/.*)$": "<rootDir>/libs/postgresql-connector/src/$1",
       "^@app/rabbitmq-connector(|/.*)$": "<rootDir>/libs/rabbitmq-connector/src/$1",
-      "^@app/auth-validator(|/.*)$": "<rootDir>/libs/auth-validator/src/$1"
+      "^@app/auth-validator(|/.*)$": "<rootDir>/libs/auth-validator/src/$1",
+      "^@app/contracts(|/.*)$": "<rootDir>/libs/contracts/src/$1"
     }
   }
 }
