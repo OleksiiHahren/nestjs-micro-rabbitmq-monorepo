@@ -17,7 +17,8 @@ export class User extends Basic {
   @Column({ nullable: false })
   email: string;
 
-  @OneToOne(() => ProfileDetails, (details) => details.user, { cascade: true })
+  @OneToOne(() => ProfileDetails, (details) => details.user, { cascade: true, eager: false })
   @JoinColumn()
   details: ProfileDetails;
+
 }

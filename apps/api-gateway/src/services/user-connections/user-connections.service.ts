@@ -18,7 +18,7 @@ export class UserConnectionsService {
     >(CreateUserConnectionContract.topic, dto);
   }
 
-  async updateStatus(
+  async updateConnectionStatus(
     dto: UpdateUserConnectionContract.Request
   ): Promise<UpdateUserConnectionContract.Response> {
     return this.rmqService.send<

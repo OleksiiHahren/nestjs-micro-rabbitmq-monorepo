@@ -6,11 +6,17 @@ import { RMQService } from 'nestjs-rmq';
 export class UserService {
   constructor(private readonly usersService: RMQService) {}
 
-  async createUser(dto: UserCreateContract.Request): Promise<UserCreateContract.Response> {
+  async createUser(
+    dto: UserCreateContract.Request
+  ): Promise<UserCreateContract.Response> {
     const user = await this.usersService.send<
       UserCreateContract.Request,
       UserCreateContract.Response
     >(UserCreateContract.topic, dto);
     return user;
+  }
+
+  async deleteUser() {
+
   }
 }

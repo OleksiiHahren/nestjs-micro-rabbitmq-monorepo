@@ -1,10 +1,17 @@
-import { UserDto } from './user.dto';
 import { UserConnectionEnum } from '../enum';
-import { IsEnum } from 'class-validator';
+import { IsEnum, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { UserConnectionCreateDto } from './user-connection-create.dto';
 
-export class UserConnectionDto {
-  userFollowed: UserDto;
+export class UserConnectionDto extends UserConnectionCreateDto {
+  @ApiProperty()
+  @IsString()
+  id: string;
 
+  @ApiProperty()
+  userWhoFollowsId: string;
+
+  @ApiProperty({ enum: UserConnectionEnum })
   @IsEnum(UserConnectionEnum)
   status: UserConnectionEnum;
 }

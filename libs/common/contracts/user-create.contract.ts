@@ -1,7 +1,4 @@
-import {
-  UserCreateDto,
-  UserDto
-} from '@app/common';
+import { UserCreateDto, UserDto } from '../dto';
 
 export namespace UserCreateContract {
   export class Request extends UserCreateDto {}
